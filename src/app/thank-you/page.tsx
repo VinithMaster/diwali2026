@@ -84,9 +84,8 @@ export default function ThankYouPage() {
             <div className="mt-9 rounded-2xl border border-[#e8edf3] bg-[#f7f9fc] p-5 sm:p-7">
               <a
                 className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-[#713036] px-6 py-4 text-base font-semibold text-white shadow-[0_8px_20px_-8px_rgba(113,48,54,0.65)] transition hover:bg-[#5f252c] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a66c34] sm:w-auto sm:min-w-72"
-                href="https://drive.google.com/uc?export=download&id=1wxpDYF6S-Pv-jMrPDeenlKAdYjvxpu6k"
+                href="https://drive.google.com/uc?export=download&id=1SeTNmTd2JSifB7ZV2NRNHLDo_dJkXTTi"
                 rel="noreferrer"
-                target="_blank"
               >
                 <DownloadIcon />
                 अपना उत्पाद डाउनलोड करें
@@ -98,7 +97,7 @@ export default function ThankYouPage() {
             <footer>
               <h2 className="text-lg font-bold text-[#35303a]">RoxyMind</h2>
               <p className="mt-2 text-sm text-[#748094]">
-                © 2025 RoxyMind. सर्वाधिकार सुरक्षित।
+                © 2026 RoxyMind. सर्वाधिकार सुरक्षित।
               </p>
             </footer>
           </div>
