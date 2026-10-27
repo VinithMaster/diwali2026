@@ -1,19 +1,30 @@
 import Image from "next/image";
 import Script from "next/script";
 
-const PAYMENT_URL = "";
+const normalizePublicUrl = (value: string | undefined) => {
+  if (!value) {
+    return "";
+  }
 
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
-const DISPLAY_PRICE = "₹ 30";
+  const trimmedValue = value.trim();
 
-const paymentUrl = (() => {
+  if (!trimmedValue) {
+    return "";
+  }
+
   try {
-    const parsedUrl = new URL(PAYMENT_URL);
+    const parsedUrl = new URL(trimmedValue);
     return parsedUrl.protocol === "https:" ? parsedUrl.toString() : "";
   } catch {
     return "";
   }
-})();
+};
+
+const PAYMENT_URL = normalizePublicUrl(process.env.NEXT_PUBLIC_PAYMENT_URL);
+const META_PIXEL_ID = (process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "").trim();
+const DISPLAY_PRICE = "₹ 30";
+
+const paymentUrl = PAYMENT_URL;
 
 const benefits = [
   {

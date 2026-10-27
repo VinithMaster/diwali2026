@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment setup
+
+This app reads public values from environment variables at build time for the checkout link and tracking pixel.
+
+1. Copy `.env.example` to `.env.local`.
+2. Replace the example payment URL with your real Razorpay or checkout link.
+3. Leave `NEXT_PUBLIC_META_PIXEL_ID` empty unless you want to enable the Meta Pixel.
+
+Example:
+
+```bash
+cp .env.example .env.local
+```
+
 ## Getting Started
 
 First, run the development server:
