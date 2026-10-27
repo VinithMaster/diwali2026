@@ -44,6 +44,9 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "out" # Built app content directory - optional
           github_id_token: ${{ steps.idtoken.outputs.result }}
+        env: 
+          NEXT_PUBLIC_PAYMENT_URL: ${{ secrets.NEXT_PUBLIC_PAYMENT_URL }} 
+          NEXT_PUBLIC_FB_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_META_PIXEL_ID }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
