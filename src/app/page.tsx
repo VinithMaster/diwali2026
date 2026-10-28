@@ -446,11 +446,36 @@ export default function Home() {
       </main>
 
       <footer className="bg-[#35191f] text-[#f8eddd]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1.2fr_1fr]">
-          <div>
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[0.8fr_1.5fr_0.9fr]">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <Image
+              alt="RoxyMind"
+              className="h-auto w-full max-w-[230px] rounded-xl shadow-lg"
+              height={2156}
+              src="/images/roxymind_refined_white.png"
+              width={2436}
+            />
+            <div className="mt-5 flex w-fit flex-col items-center">
+              <p className="text-lg font-semibold tracking-wide text-[#f8eddd]">
+                Roxymind Digital Creations
+              </p>
+              <div
+                aria-hidden="true"
+                className="mt-2 flex w-full max-w-[220px] items-center gap-3 text-[#e6c787]"
+              >
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#e6c787]/80" />
+                <span className="text-sm leading-none">✦</span>
+                <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#e6c787]/80" />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-start justify-center border-y border-white/10 py-6 md:border-y-0 md:border-x md:px-8 lg:py-0">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#e6c787]">
+              हमारी मार्गदर्शिका
+            </p>
             <a
-              className="text-xl font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e6c787]"
-              href="#home"
+              className="text-xl font-bold leading-snug underline-offset-4 transition-colors hover:text-[#e6c787] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e6c787]"
+              href="https://mango-pond-02f385e10.1.azurestaticapps.net/#home"
             >
               दीपावली मार्गदर्शिका २०२६
             </a>
@@ -467,7 +492,7 @@ export default function Home() {
           </div>
           <nav
             aria-label="फुटर नेविगेशन"
-            className="grid content-start gap-8 sm:grid-cols-2"
+            className="grid content-start gap-8 md:col-span-2 md:grid-cols-2 lg:col-span-1 lg:grid-cols-1"
           >
             <div>
               <h2 className="mb-4 text-sm font-semibold tracking-wide text-[#e6c787]">
