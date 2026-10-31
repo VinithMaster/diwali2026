@@ -176,20 +176,50 @@ export default function Home() {
   return (
     <>
       {META_PIXEL_ID && (
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', ${JSON.stringify(META_PIXEL_ID)});
-            fbq('track', 'PageView');
-          `}
-        </Script>
+        <>
+          <Script id="meta-pixel" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', ${JSON.stringify(META_PIXEL_ID)});
+              fbq('track', 'PageView');
+              fbq('track', 'ViewContent', {
+                content_ids: ['diwali-ebook2026'],
+                content_type: 'ebook',
+                value: 30,
+                currency: 'INR'
+              });
+              document.addEventListener('click', function(event) {
+                var target = event.target;
+                if (!(target instanceof Element)) return;
+                var purchaseLink = target.closest('a.purchase-cta');
+                if (!purchaseLink) return;
+                fbq('track', 'InitiateCheckout', {
+                  content_ids: ['diwali-ebook2026'],
+                  content_type: 'ebook',
+                  value: 30,
+                  currency: 'INR'
+                });
+              });
+            `}
+          </Script>
+          <noscript>
+            <Image
+              alt=""
+              height={1}
+              src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+              style={{ display: "none" }}
+              unoptimized
+              width={1}
+            />
+          </noscript>
+        </>
       )}
       <header className="border-b border-[#eadfce] bg-[#fffaf1]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8">

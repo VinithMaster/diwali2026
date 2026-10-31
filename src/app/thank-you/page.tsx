@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Script from "next/script";
 
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
+const META_PIXEL_ID = (process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "").trim();
+const PURCHASE_EVENT = {
+  content_ids: ["diwali-ebook2026"],
+  content_type: "ebook",
+  value: 30,
+  currency: "INR",
+};
 
 export const metadata: Metadata = {
   title: "खरीदारी के लिए धन्यवाद | RoxyMind",
@@ -32,20 +39,33 @@ export default function ThankYouPage() {
   return (
     <>
       {META_PIXEL_ID && (
-        <Script id="meta-pixel-thank-you" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', ${JSON.stringify(META_PIXEL_ID)});
-            fbq('track', 'PageView');
-          `}
-        </Script>
+        <>
+          <Script id="meta-pixel-thank-you" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', ${JSON.stringify(META_PIXEL_ID)});
+              fbq('track', 'PageView');
+              fbq('track', 'Purchase', ${JSON.stringify(PURCHASE_EVENT)});
+            `}
+          </Script>
+          <noscript>
+            <Image
+              alt=""
+              height={1}
+              src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+              style={{ display: "none" }}
+              unoptimized
+              width={1}
+            />
+          </noscript>
+        </>
       )}
       <main className="flex min-h-screen items-center justify-center bg-[#eef2f6] px-4 py-12 sm:px-6">
         <div className="w-full max-w-2xl overflow-hidden rounded-3xl border border-[#e2e8f0] bg-white text-center shadow-[0_24px_70px_-28px_rgba(35,42,54,0.28)]">
